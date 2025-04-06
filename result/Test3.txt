@@ -1,0 +1,141 @@
+Terminal Symbol:
+# k < > ( ) { } i n h m r s + - * / = b , ; u f e | & w ! $
+
+Non-terminal Symbol:
+S A B C D E F G H I J K L M N O P Q T R
+
+Production Rule:
+S'->S
+S->AB
+A->#n<h>A
+A->uptJ
+B->CD(){E}
+C->k
+D->m
+E->FE
+E->GE
+E->R
+E->f(M){N}e{N}E
+E->w(M){N}E
+N->F
+N->G
+M->M||O
+M->O
+O->O&&P
+O->P
+P->P==Q
+P->P!=Q
+P->Q
+Q->K<K
+Q->K<=K
+Q->K>=K
+Q->K>K
+Q->K
+F->b=KJ
+J->;
+K->K+T
+K->K-T
+K->T
+T->T*L
+T->T/L
+T->L
+L->(K)
+L->b
+L->s
+G->HIJ
+H->k
+I->b
+I->b,I
+R->rsJ
+
+Lexical analysis result:
+1: /*This is the test sample 3*/
+    Note, content = This is the test sample 3
+2: # include<iostream>
+    Symbol: #
+    INCLUDE: include
+    Symbol: <
+    Headfile: iostream
+    Symbol: >
+3: using namespace std;
+    USING: using
+    NAMESPACE: namespace
+    STD: std
+    Symbol: ;
+4: int main()
+    Keyword: int
+    MAIN: main
+    Symbol: (
+    Symbol: )
+5: {
+    Symbol: {
+6:     int x,y;
+    Keyword: int
+    ID, name = x
+    Symbol: ,
+    ID, name = y
+    Symbol: ;
+7:     x=1.23E+10;
+    ID, name = x
+    Symbol: =
+    NUM-F, value = 1.23E+10
+    Symbol: ;
+8:     y+;
+    ID, name = y
+    Symbol: +
+    Symbol: ;
+9:     return 0;
+    RETURN: return
+    NUM-I, value = 0
+    Symbol: ;
+10: }
+    Symbol: }
+
+Sequence of lexical units:
+#n<h>upt;km(){kb,b;b=s;b+;rs;}
+
+Analysis process:
+    stack                                                       symbol                                  input                                                                 action
+1   0                                                                                                   #n<h>upt;km(){kb,b;b=s;b+;rs;}$                                       Move In
+2   03                                                          #                                       n<h>upt;km(){kb,b;b=s;b+;rs;}$                                        Move In
+3   038                                                         #n                                      <h>upt;km(){kb,b;b=s;b+;rs;}$                                         Move In
+4   03812                                                       #n<                                     h>upt;km(){kb,b;b=s;b+;rs;}$                                          Move In
+5   0381215                                                     #n<h                                    >upt;km(){kb,b;b=s;b+;rs;}$                                           Move In
+6   038121519                                                   #n<h>                                   upt;km(){kb,b;b=s;b+;rs;}$                                            Move In
+7   0381215194                                                  #n<h>u                                  pt;km(){kb,b;b=s;b+;rs;}$                                             Move In
+8   03812151949                                                 #n<h>up                                 t;km(){kb,b;b=s;b+;rs;}$                                              Move In
+9   0381215194913                                               #n<h>upt                                ;km(){kb,b;b=s;b+;rs;}$                                               Move In
+10  038121519491317                                             #n<h>upt;                               km(){kb,b;b=s;b+;rs;}$                                                According to J->; Reduction
+11  038121519491316                                             #n<h>uptJ                               km(){kb,b;b=s;b+;rs;}$                                                According to A->uptJ Reduction
+12  03812151921                                                 #n<h>A                                  km(){kb,b;b=s;b+;rs;}$                                                According to A->#n<h>A Reduction
+13  02                                                          A                                       km(){kb,b;b=s;b+;rs;}$                                                Move In
+14  027                                                         Ak                                      m(){kb,b;b=s;b+;rs;}$                                                 According to C->k Reduction
+15  026                                                         AC                                      m(){kb,b;b=s;b+;rs;}$                                                 Move In
+16  02611                                                       ACm                                     (){kb,b;b=s;b+;rs;}$                                                  According to D->m Reduction
+17  02610                                                       ACD                                     (){kb,b;b=s;b+;rs;}$                                                  Move In
+18  0261014                                                     ACD(                                    ){kb,b;b=s;b+;rs;}$                                                   Move In
+19  026101418                                                   ACD()                                   {kb,b;b=s;b+;rs;}$                                                    Move In
+20  02610141820                                                 ACD(){                                  kb,b;b=s;b+;rs;}$                                                     Move In
+21  0261014182027                                               ACD(){k                                 b,b;b=s;b+;rs;}$                                                      According to H->k Reduction
+22  0261014182026                                               ACD(){H                                 b,b;b=s;b+;rs;}$                                                      Move In
+23  026101418202637                                             ACD(){Hb                                ,b;b=s;b+;rs;}$                                                       Move In
+24  02610141820263748                                           ACD(){Hb,                               b;b=s;b+;rs;}$                                                        Move In
+25  0261014182026374837                                         ACD(){Hb,b                              ;b=s;b+;rs;}$                                                         According to I->b Reduction
+26  0261014182026374862                                         ACD(){Hb,I                              ;b=s;b+;rs;}$                                                         According to I->b,I Reduction
+27  026101418202636                                             ACD(){HI                                ;b=s;b+;rs;}$                                                         Move In
+28  02610141820263617                                           ACD(){HI;                               b=s;b+;rs;}$                                                          According to J->; Reduction
+29  02610141820263647                                           ACD(){HIJ                               b=s;b+;rs;}$                                                          According to G->HIJ Reduction
+30  0261014182025                                               ACD(){G                                 b=s;b+;rs;}$                                                          Move In
+31  026101418202524                                             ACD(){Gb                                =s;b+;rs;}$                                                           Move In
+32  02610141820252434                                           ACD(){Gb=                               s;b+;rs;}$                                                            Move In
+33  0261014182025243446                                         ACD(){Gb=s                              ;b+;rs;}$                                                             According to L->s Reduction
+34  0261014182025243443                                         ACD(){Gb=L                              ;b+;rs;}$                                                             According to T->L Reduction
+35  0261014182025243442                                         ACD(){Gb=T                              ;b+;rs;}$                                                             According to K->T Reduction
+36  0261014182025243441                                         ACD(){Gb=K                              ;b+;rs;}$                                                             Move In
+37  026101418202524344117                                       ACD(){Gb=K;                             b+;rs;}$                                                              According to J->; Reduction
+38  026101418202524344156                                       ACD(){Gb=KJ                             b+;rs;}$                                                              According to F->b=KJ Reduction
+39  026101418202523                                             ACD(){GF                                b+;rs;}$                                                              Move In
+40  02610141820252324                                           ACD(){GFb                               +;rs;}$                                                               wrong
+
+Syntax analysis result:
+Cannot be generated by the grammar of the source language!

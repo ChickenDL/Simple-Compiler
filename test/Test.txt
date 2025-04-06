@@ -1,0 +1,9 @@
+/*This is the test sample*/
+# include<iostream>
+# include<string>
+using namespace std;
+int main()
+{
+    int x,y,z;
+    return 0;
+}

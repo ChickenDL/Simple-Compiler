@@ -1,0 +1,247 @@
+Terminal Symbol:
+# k < > ( ) { } i n h m r s + - * / = b , ; u f e | & w ! $
+
+Non-terminal Symbol:
+S A B C D E F G H I J K L M N O P Q T R
+
+Production Rule:
+S'->S
+S->AB
+A->#n<h>A
+A->uptJ
+B->CD(){E}
+C->k
+D->m
+E->FE
+E->GE
+E->R
+E->f(M){N}e{N}E
+E->w(M){N}E
+N->F
+N->G
+M->M||O
+M->O
+O->O&&P
+O->P
+P->P==Q
+P->P!=Q
+P->Q
+Q->K<K
+Q->K<=K
+Q->K>=K
+Q->K>K
+Q->K
+F->b=KJ
+J->;
+K->K+T
+K->K-T
+K->T
+T->T*L
+T->T/L
+T->L
+L->(K)
+L->b
+L->s
+G->HIJ
+H->k
+I->b
+I->b,I
+R->rsJ
+
+Lexical analysis result:
+1: /*This is the test sample 1*/
+    Note, content = This is the test sample 1
+2: # include<iostream>
+    Symbol: #
+    INCLUDE: include
+    Symbol: <
+    Headfile: iostream
+    Symbol: >
+3: # include<string>
+    Symbol: #
+    INCLUDE: include
+    Symbol: <
+    Headfile: string
+    Symbol: >
+4: using namespace std;
+    USING: using
+    NAMESPACE: namespace
+    STD: std
+    Symbol: ;
+5: int main()
+    Keyword: int
+    MAIN: main
+    Symbol: (
+    Symbol: )
+6: {
+    Symbol: {
+7:     int x,y,z;
+    Keyword: int
+    ID, name = x
+    Symbol: ,
+    ID, name = y
+    Symbol: ,
+    ID, name = z
+    Symbol: ;
+8:     x=4;y=6;
+    ID, name = x
+    Symbol: =
+    NUM-I, value = 4
+    Symbol: ;
+    ID, name = y
+    Symbol: =
+    NUM-I, value = 6
+    Symbol: ;
+9:     if(x>=y)
+    IF: if
+    Symbol: (
+    ID, name = x
+    Symbol: >=
+    ID, name = y
+    Symbol: )
+10:     {
+    Symbol: {
+11:         z=x;
+    ID, name = z
+    Symbol: =
+    ID, name = x
+    Symbol: ;
+12:     }
+    Symbol: }
+13:     else
+    ELSE: else
+14:     {
+    Symbol: {
+15:         z=y;
+    ID, name = z
+    Symbol: =
+    ID, name = y
+    Symbol: ;
+16:     }
+    Symbol: }
+17:     return 0;
+    RETURN: return
+    NUM-I, value = 0
+    Symbol: ;
+18: }
+    Symbol: }
+
+Sequence of lexical units:
+#n<h>#n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}
+
+Analysis process:
+    stack                                                       symbol                                  input                                                                 action
+1   0                                                                                                   #n<h>#n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$           Move In
+2   03                                                          #                                       n<h>#n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$            Move In
+3   038                                                         #n                                      <h>#n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$             Move In
+4   03812                                                       #n<                                     h>#n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$              Move In
+5   0381215                                                     #n<h                                    >#n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$               Move In
+6   038121519                                                   #n<h>                                   #n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                Move In
+7   0381215193                                                  #n<h>#                                  n<h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                 Move In
+8   03812151938                                                 #n<h>#n                                 <h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                  Move In
+9   0381215193812                                               #n<h>#n<                                h>upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                   Move In
+10  038121519381215                                             #n<h>#n<h                               >upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                    Move In
+11  03812151938121519                                           #n<h>#n<h>                              upt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                     Move In
+12  038121519381215194                                          #n<h>#n<h>u                             pt;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                      Move In
+13  0381215193812151949                                         #n<h>#n<h>up                            t;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                       Move In
+14  038121519381215194913                                       #n<h>#n<h>upt                           ;km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                        Move In
+15  03812151938121519491317                                     #n<h>#n<h>upt;                          km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                         According to J->; Reduction
+16  03812151938121519491316                                     #n<h>#n<h>uptJ                          km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                         According to A->uptJ Reduction
+17  0381215193812151921                                         #n<h>#n<h>A                             km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                         According to A->#n<h>A Reduction
+18  03812151921                                                 #n<h>A                                  km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                         According to A->#n<h>A Reduction
+19  02                                                          A                                       km(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                         Move In
+20  027                                                         Ak                                      m(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                          According to C->k Reduction
+21  026                                                         AC                                      m(){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                          Move In
+22  02611                                                       ACm                                     (){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                           According to D->m Reduction
+23  02610                                                       ACD                                     (){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                           Move In
+24  0261014                                                     ACD(                                    ){kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                            Move In
+25  026101418                                                   ACD()                                   {kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                             Move In
+26  02610141820                                                 ACD(){                                  kb,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                              Move In
+27  0261014182027                                               ACD(){k                                 b,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                               According to H->k Reduction
+28  0261014182026                                               ACD(){H                                 b,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                               Move In
+29  026101418202637                                             ACD(){Hb                                ,b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                Move In
+30  02610141820263748                                           ACD(){Hb,                               b,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                 Move In
+31  0261014182026374837                                         ACD(){Hb,b                              ,b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                  Move In
+32  026101418202637483748                                       ACD(){Hb,b,                             b;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                   Move In
+33  02610141820263748374837                                     ACD(){Hb,b,b                            ;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                    According to I->b Reduction
+34  02610141820263748374862                                     ACD(){Hb,b,I                            ;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                    According to I->b,I Reduction
+35  0261014182026374862                                         ACD(){Hb,I                              ;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                    According to I->b,I Reduction
+36  026101418202636                                             ACD(){HI                                ;b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                    Move In
+37  02610141820263617                                           ACD(){HI;                               b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                     According to J->; Reduction
+38  02610141820263647                                           ACD(){HIJ                               b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                     According to G->HIJ Reduction
+39  0261014182025                                               ACD(){G                                 b=s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                     Move In
+40  026101418202524                                             ACD(){Gb                                =s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                      Move In
+41  02610141820252434                                           ACD(){Gb=                               s;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                       Move In
+42  0261014182025243446                                         ACD(){Gb=s                              ;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                        According to L->s Reduction
+43  0261014182025243443                                         ACD(){Gb=L                              ;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                        According to T->L Reduction
+44  0261014182025243442                                         ACD(){Gb=T                              ;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                        According to K->T Reduction
+45  0261014182025243441                                         ACD(){Gb=K                              ;b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                        Move In
+46  026101418202524344117                                       ACD(){Gb=K;                             b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                         According to J->; Reduction
+47  026101418202524344156                                       ACD(){Gb=KJ                             b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                         According to F->b=KJ Reduction
+48  026101418202523                                             ACD(){GF                                b=s;f(b>=b){b=b;}e{b=b;}rs;}$                                         Move In
+49  02610141820252324                                           ACD(){GFb                               =s;f(b>=b){b=b;}e{b=b;}rs;}$                                          Move In
+50  0261014182025232434                                         ACD(){GFb=                              s;f(b>=b){b=b;}e{b=b;}rs;}$                                           Move In
+51  026101418202523243446                                       ACD(){GFb=s                             ;f(b>=b){b=b;}e{b=b;}rs;}$                                            According to L->s Reduction
+52  026101418202523243443                                       ACD(){GFb=L                             ;f(b>=b){b=b;}e{b=b;}rs;}$                                            According to T->L Reduction
+53  026101418202523243442                                       ACD(){GFb=T                             ;f(b>=b){b=b;}e{b=b;}rs;}$                                            According to K->T Reduction
+54  026101418202523243441                                       ACD(){GFb=K                             ;f(b>=b){b=b;}e{b=b;}rs;}$                                            Move In
+55  02610141820252324344117                                     ACD(){GFb=K;                            f(b>=b){b=b;}e{b=b;}rs;}$                                             According to J->; Reduction
+56  02610141820252324344156                                     ACD(){GFb=KJ                            f(b>=b){b=b;}e{b=b;}rs;}$                                             According to F->b=KJ Reduction
+57  02610141820252323                                           ACD(){GFF                               f(b>=b){b=b;}e{b=b;}rs;}$                                             Move In
+58  0261014182025232330                                         ACD(){GFFf                              (b>=b){b=b;}e{b=b;}rs;}$                                              Move In
+59  026101418202523233039                                       ACD(){GFFf(                             b>=b){b=b;}e{b=b;}rs;}$                                               Move In
+60  02610141820252323303945                                     ACD(){GFFf(b                            >=b){b=b;}e{b=b;}rs;}$                                                According to L->b Reduction
+61  02610141820252323303943                                     ACD(){GFFf(L                            >=b){b=b;}e{b=b;}rs;}$                                                According to T->L Reduction
+62  02610141820252323303942                                     ACD(){GFFf(T                            >=b){b=b;}e{b=b;}rs;}$                                                According to K->T Reduction
+63  02610141820252323303954                                     ACD(){GFFf(K                            >=b){b=b;}e{b=b;}rs;}$                                                Move In
+64  0261014182025232330395469                                   ACD(){GFFf(K>                           =b){b=b;}e{b=b;}rs;}$                                                 Move In
+65  026101418202523233039546983                                 ACD(){GFFf(K>=                          b){b=b;}e{b=b;}rs;}$                                                  Move In
+66  02610141820252323303954698345                               ACD(){GFFf(K>=b                         ){b=b;}e{b=b;}rs;}$                                                   According to L->b Reduction
+67  02610141820252323303954698343                               ACD(){GFFf(K>=L                         ){b=b;}e{b=b;}rs;}$                                                   According to T->L Reduction
+68  02610141820252323303954698342                               ACD(){GFFf(K>=T                         ){b=b;}e{b=b;}rs;}$                                                   According to K->T Reduction
+69  02610141820252323303954698394                               ACD(){GFFf(K>=K                         ){b=b;}e{b=b;}rs;}$                                                   According to Q->K>=K Reduction
+70  02610141820252323303953                                     ACD(){GFFf(Q                            ){b=b;}e{b=b;}rs;}$                                                   According to P->Q Reduction
+71  02610141820252323303952                                     ACD(){GFFf(P                            ){b=b;}e{b=b;}rs;}$                                                   According to O->P Reduction
+72  02610141820252323303951                                     ACD(){GFFf(O                            ){b=b;}e{b=b;}rs;}$                                                   According to M->O Reduction
+73  02610141820252323303950                                     ACD(){GFFf(M                            ){b=b;}e{b=b;}rs;}$                                                   Move In
+74  0261014182025232330395063                                   ACD(){GFFf(M)                           {b=b;}e{b=b;}rs;}$                                                    Move In
+75  026101418202523233039506376                                 ACD(){GFFf(M){                          b=b;}e{b=b;}rs;}$                                                     Move In
+76  02610141820252323303950637624                               ACD(){GFFf(M){b                         =b;}e{b=b;}rs;}$                                                      Move In
+77  0261014182025232330395063762434                             ACD(){GFFf(M){b=                        b;}e{b=b;}rs;}$                                                       Move In
+78  026101418202523233039506376243445                           ACD(){GFFf(M){b=b                       ;}e{b=b;}rs;}$                                                        According to L->b Reduction
+79  026101418202523233039506376243443                           ACD(){GFFf(M){b=L                       ;}e{b=b;}rs;}$                                                        According to T->L Reduction
+80  026101418202523233039506376243442                           ACD(){GFFf(M){b=T                       ;}e{b=b;}rs;}$                                                        According to K->T Reduction
+81  026101418202523233039506376243441                           ACD(){GFFf(M){b=K                       ;}e{b=b;}rs;}$                                                        Move In
+82  02610141820252323303950637624344117                         ACD(){GFFf(M){b=K;                      }e{b=b;}rs;}$                                                         According to J->; Reduction
+83  02610141820252323303950637624344156                         ACD(){GFFf(M){b=KJ                      }e{b=b;}rs;}$                                                         According to F->b=KJ Reduction
+84  02610141820252323303950637687                               ACD(){GFFf(M){F                         }e{b=b;}rs;}$                                                         According to N->F Reduction
+85  02610141820252323303950637686                               ACD(){GFFf(M){N                         }e{b=b;}rs;}$                                                         Move In
+86  0261014182025232330395063768696                             ACD(){GFFf(M){N}                        e{b=b;}rs;}$                                                          Move In
+87  026101418202523233039506376869698                           ACD(){GFFf(M){N}e                       {b=b;}rs;}$                                                           Move In
+88  026101418202523233039506376869698100                        ACD(){GFFf(M){N}e{                      b=b;}rs;}$                                                            Move In
+89  02610141820252323303950637686969810024                      ACD(){GFFf(M){N}e{b                     =b;}rs;}$                                                             Move In
+90  0261014182025232330395063768696981002434                    ACD(){GFFf(M){N}e{b=                    b;}rs;}$                                                              Move In
+91  026101418202523233039506376869698100243445                  ACD(){GFFf(M){N}e{b=b                   ;}rs;}$                                                               According to L->b Reduction
+92  026101418202523233039506376869698100243443                  ACD(){GFFf(M){N}e{b=L                   ;}rs;}$                                                               According to T->L Reduction
+93  026101418202523233039506376869698100243442                  ACD(){GFFf(M){N}e{b=T                   ;}rs;}$                                                               According to K->T Reduction
+94  026101418202523233039506376869698100243441                  ACD(){GFFf(M){N}e{b=K                   ;}rs;}$                                                               Move In
+95  02610141820252323303950637686969810024344117                ACD(){GFFf(M){N}e{b=K;                  }rs;}$                                                                According to J->; Reduction
+96  02610141820252323303950637686969810024344156                ACD(){GFFf(M){N}e{b=KJ                  }rs;}$                                                                According to F->b=KJ Reduction
+97  02610141820252323303950637686969810087                      ACD(){GFFf(M){N}e{F                     }rs;}$                                                                According to N->F Reduction
+98  026101418202523233039506376869698100101                     ACD(){GFFf(M){N}e{N                     }rs;}$                                                                Move In
+99  026101418202523233039506376869698100101102                  ACD(){GFFf(M){N}e{N}                    rs;}$                                                                 Move In
+100 02610141820252323303950637686969810010110229                ACD(){GFFf(M){N}e{N}r                   s;}$                                                                  Move In
+101 0261014182025232330395063768696981001011022938              ACD(){GFFf(M){N}e{N}rs                  ;}$                                                                   Move In
+102 026101418202523233039506376869698100101102293817            ACD(){GFFf(M){N}e{N}rs;                 }$                                                                    According to J->; Reduction
+103 026101418202523233039506376869698100101102293849            ACD(){GFFf(M){N}e{N}rsJ                 }$                                                                    According to R->rsJ Reduction
+104 02610141820252323303950637686969810010110228                ACD(){GFFf(M){N}e{N}R                   }$                                                                    According to E->R Reduction
+105 026101418202523233039506376869698100101102103               ACD(){GFFf(M){N}e{N}E                   }$                                                                    According to E->f(M){N}e{N}E Reduction
+106 0261014182025232333                                         ACD(){GFFE                              }$                                                                    According to E->FE Reduction
+107 02610141820252333                                           ACD(){GFE                               }$                                                                    According to E->FE Reduction
+108 026101418202535                                             ACD(){GE                                }$                                                                    According to E->GE Reduction
+109 0261014182022                                               ACD(){E                                 }$                                                                    Move In
+110 026101418202232                                             ACD(){E}                                $                                                                     According to B->CD(){E} Reduction
+111 025                                                         AB                                      $                                                                     According to S->AB Reduction
+112 01                                                          S                                       $                                                                     Accept
+
+The grammar of the source language can generate!

@@ -1,0 +1,10 @@
+/*This is the test sample 3*/
+# include<iostream>
+using namespace std;
+int main()
+{
+    int x,y;
+    x=1.23E+10;
+    y+;
+    return 0;
+}
