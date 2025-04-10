@@ -4,9 +4,12 @@
  * @Author: ZXL
  * @Date: 2025-04-06 11:25:11
  * @LastEditors: ZXL
- * @LastEditTime: 2025-04-06 14:19:47
+ * @LastEditTime: 2025-04-10 17:00:34
 -->
 # Simple-Compiler
+
+[![GitHub](https://img.shields.io/badge/GitHub-ChikenDL-181717?logo=github)](https://github.com/ChickenDL)
+![Email](https://img.shields.io/badge/Email-torchimport_at_gmail_dot_com-D14836?logo=gmail)
 
 A compiler implementation that performs **lexical and syntax analysis** for any given SLR(1) grammar.
 
